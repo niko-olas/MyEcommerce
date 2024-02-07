@@ -7,9 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Modules\CounterModule\CounterModule.csproj" />
     <ProjectReference Include="..\Modules\FatchDataModule\FatchDataModule.csproj" />
+    <ProjectReference Include="..\Modules\FormModules\FormModules.csproj" />
     <ProjectReference Include="..\Modules\IndexModules\IndexModules.csproj" />
-    <ProjectReference Include="..\MyEcommerce.Client\MyEcommerce.Client.csproj" />
+	  
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
   </ItemGroup>
 

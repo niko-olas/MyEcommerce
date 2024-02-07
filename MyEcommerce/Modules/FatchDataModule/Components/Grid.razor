@@ -1,0 +1,49 @@
+﻿@if (Items == null)
+{
+    <p><em>Empty</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Items)
+            {
+                <tr>
+                    <td>@item.Date.ToShortDateString()</td>
+                    <td>@item.TemperatureC</td>
+                    <td>@item.TemperatureF</td>
+                    <td>@item.Summary</td>
+                    <td><button class="btn btn-warning" @onclick="() => OnClick(item)"> CLICK </button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    if (property is not null)
+    {
+        <FatchDataModule.Components.Details Value="property" />
+    }
+}
+
+@code {
+
+
+    private WeatherForecast property = null;
+
+    [Parameter]
+    public WeatherForecast[]? Items { get; set; } = null;
+
+
+    public void OnClick(WeatherForecast weather)
+    {
+        this.property = weather;
+    }
+}

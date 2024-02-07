@@ -5,10 +5,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
-    .AddInteractiveWebAssemblyComponents();
+    .AddInteractiveServerComponents();
 
 builder.RegisterFatchDataModule();
+builder.RegisterFormModule();
 
 var app = builder.Build();
 
@@ -31,11 +31,11 @@ app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode()
     .AddAdditionalAssemblies(
-
-    typeof(MyEcommerce.Client._Imports).Assembly,
+    typeof(FormModules.Form).Assembly,
+    typeof(CounterModule.Counter).Assembly,
     typeof(IndexModules.Index).Assembly,
     typeof(FatchDataModule.FatchData).Assembly);
+
 
 app.Run();

@@ -5,13 +5,15 @@ VisualStudioVersion = 17.8.34511.84
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyEcommerce", "MyEcommerce\MyEcommerce\MyEcommerce.csproj", "{8FE18865-622D-40A4-A35D-5DFBF08A07B7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyEcommerce.Client", "MyEcommerce\MyEcommerce.Client\MyEcommerce.Client.csproj", "{453E3A51-99A6-4D42-BE20-E6C5EF5F3C88}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Models", "Models", "{20D3AEC6-C1E7-477A-BC43-AA5A657E0EB7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IndexModules", "MyEcommerce\Modules\IndexModules\IndexModules.csproj", "{B89D6905-2710-4165-916B-BE81CDF9248B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IndexModules", "MyEcommerce\Modules\IndexModules\IndexModules.csproj", "{B89D6905-2710-4165-916B-BE81CDF9248B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FatchDataModule", "MyEcommerce\Modules\FatchDataModule\FatchDataModule.csproj", "{FC5EA102-7945-413D-B487-E82A5C8D9315}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FatchDataModule", "MyEcommerce\Modules\FatchDataModule\FatchDataModule.csproj", "{FC5EA102-7945-413D-B487-E82A5C8D9315}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CounterModule", "MyEcommerce\Modules\CounterModule\CounterModule.csproj", "{3BB02723-25FD-4913-BD31-F3DAFE47D51A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FormModules", "MyEcommerce\Modules\FormModules\FormModules.csproj", "{E5485491-8A45-4D01-AD1F-166CD053EB5E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +25,6 @@ Global
 		{8FE18865-622D-40A4-A35D-5DFBF08A07B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FE18865-622D-40A4-A35D-5DFBF08A07B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FE18865-622D-40A4-A35D-5DFBF08A07B7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{453E3A51-99A6-4D42-BE20-E6C5EF5F3C88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{453E3A51-99A6-4D42-BE20-E6C5EF5F3C88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{453E3A51-99A6-4D42-BE20-E6C5EF5F3C88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{453E3A51-99A6-4D42-BE20-E6C5EF5F3C88}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B89D6905-2710-4165-916B-BE81CDF9248B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B89D6905-2710-4165-916B-BE81CDF9248B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B89D6905-2710-4165-916B-BE81CDF9248B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -35,6 +33,14 @@ Global
 		{FC5EA102-7945-413D-B487-E82A5C8D9315}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FC5EA102-7945-413D-B487-E82A5C8D9315}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FC5EA102-7945-413D-B487-E82A5C8D9315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BB02723-25FD-4913-BD31-F3DAFE47D51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BB02723-25FD-4913-BD31-F3DAFE47D51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BB02723-25FD-4913-BD31-F3DAFE47D51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BB02723-25FD-4913-BD31-F3DAFE47D51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5485491-8A45-4D01-AD1F-166CD053EB5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5485491-8A45-4D01-AD1F-166CD053EB5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5485491-8A45-4D01-AD1F-166CD053EB5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5485491-8A45-4D01-AD1F-166CD053EB5E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{B89D6905-2710-4165-916B-BE81CDF9248B} = {20D3AEC6-C1E7-477A-BC43-AA5A657E0EB7}
 		{FC5EA102-7945-413D-B487-E82A5C8D9315} = {20D3AEC6-C1E7-477A-BC43-AA5A657E0EB7}
+		{3BB02723-25FD-4913-BD31-F3DAFE47D51A} = {20D3AEC6-C1E7-477A-BC43-AA5A657E0EB7}
+		{E5485491-8A45-4D01-AD1F-166CD053EB5E} = {20D3AEC6-C1E7-477A-BC43-AA5A657E0EB7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E2F98DCE-F306-433E-9088-AB45065D9390}

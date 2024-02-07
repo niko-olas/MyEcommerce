@@ -1,0 +1,16 @@
+﻿@using FormModules.Data
+
+
+<h3>@Value.Summary</h3>
+
+<button class="btn btn-warning" @onclick="OnCancel">Cancel</button>
+<button class="btn btn-warning">Save</button>
+
+@code {
+
+    [Parameter]
+    public Item? Value { get; set; }
+
+    [Parameter]
+    public EventCallback OnCancel { get; set; }
+}

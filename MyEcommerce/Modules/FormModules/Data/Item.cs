@@ -1,6 +1,6 @@
-﻿namespace FatchDataModule.Data
+﻿namespace FormModules.Data
 {
-    public class WeatherForecast
+    public class Item
     {
         public DateOnly Date { get; set; }
         public int TemperatureC { get; set; }

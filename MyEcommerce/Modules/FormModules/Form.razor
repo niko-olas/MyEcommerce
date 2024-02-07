@@ -1,0 +1,44 @@
+﻿@page "/form"
+@rendermode @(new InteractiveServerRenderMode(false))
+
+@inject ItemService service;
+
+<PageTitle>Weather</PageTitle>
+
+<h1>Weather</h1>
+
+<p>This component demonstrates showing data.</p>
+
+@if (item is null)
+{
+    <Grid Items="items" OnDetails="Detail"  />
+
+}
+else
+{
+    <Details Value="@item" OnCancel="Cancel" />
+
+}
+
+
+    
+@code {
+    private List<Item>? items = null;
+    private Item? item = null;
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        items = await service.GetData();    
+    }
+
+    private void Detail(Item item)
+    {
+        this.item = item;
+    }
+
+    private void Cancel()
+    {
+        this.item = null;
+    }
+}
