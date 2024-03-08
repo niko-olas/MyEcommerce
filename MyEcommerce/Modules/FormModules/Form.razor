@@ -1,4 +1,5 @@
 ﻿@page "/form"
+
 @rendermode @(new InteractiveServerRenderMode(false))
 
 @inject ItemService service;
@@ -11,12 +12,12 @@
 
 @if (item is null)
 {
-    <Grid Items="items" OnDetails="Detail"  />
+    <Grid Items="items" OnDetails="Detail" OnCreate="Create" OnDelete="Delete" />
 
 }
 else
 {
-    <Details Value="@item" OnCancel="Cancel" />
+    <Details Value="@item" OnCancel="Cancel" OnSave="Save" />
 
 }
 
@@ -37,8 +38,27 @@ else
         this.item = item;
     }
 
+
+    private void Delete(Item item)
+    {
+        items!.Remove(item);
+        this.item = null;
+    }
+
     private void Cancel()
     {
         this.item = null;
+    }
+
+    private void Save(Item item)
+    {
+        items!.Add(item);
+
+        this.item = null;
+    }
+
+    private void Create()
+    {
+        this.item = new Item();
     }
 }

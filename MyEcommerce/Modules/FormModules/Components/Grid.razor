@@ -1,5 +1,7 @@
 ﻿
 
+<button class="btn btn-primary" @onclick="OnCreate">Create Item</button>
+
 @if (Items == null)
 {
     <p><em>Empty</em></p>
@@ -24,6 +26,7 @@ else
                     <td>@item.TemperatureF</td>
                     <td>@item.Summary</td>
                     <td><button class="btn btn-warning" @onclick="@(() => OnDetails.InvokeAsync(item))"> DETAILS </button></td>
+                    <td><button class="btn btn-danger" @onclick="@(() => OnDelete.InvokeAsync(item))"> DELETE </button></td>
                 </tr>
             }
         </tbody>
@@ -41,10 +44,14 @@ else
     [Parameter]
     public EventCallback<Item> OnDetails { get; set; }
 
+    [Parameter]
+    public EventCallback<Item> OnDelete { get; set; }
 
+    [Parameter]
+    public EventCallback OnCreate { get; set; }
 
     private Item? currentItem = null;
 
-
+   
 
 }
