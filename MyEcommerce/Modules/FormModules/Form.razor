@@ -17,12 +17,32 @@
 }
 else
 {
-    <Details Value="@item" OnCancel="Cancel" OnSave="Save" />
+    <Details Value="@item" OnCancel="Cancel" OnSave="Save">
+        <Filds>
+            <div class="col-md-6">
+                <label class="form-label">Summary</label>
+                <InputText @bind-Value="item.Summary" class="form-control" />
+                <ValidationMessage For="(() => item.Summary)" />
+            </div>
+
+            <div class="col-md-6">
+                <label class="form-label">Date</label>
+                <InputDate @bind-Value="item!.Date" class="form-control" />
+
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Temperatura</label>
+                <InputNumber @bind-Value="item!.TemperatureC" class="form-control" />
+                <ValidationMessage For="(() => item.TemperatureC)" />
+
+            </div>
+        </Filds>
+    </Details>
 
 }
 
 
-    
+
 @code {
     private List<Item>? items = null;
     private Item? item = null;
@@ -30,7 +50,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        items = await service.GetData();    
+        items = await service.GetData();
     }
 
     private void Detail(Item item)

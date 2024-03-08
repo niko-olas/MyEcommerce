@@ -8,24 +8,10 @@
 <EditForm Model="@Value" class="row g-3" OnValidSubmit="@(() => OnSave.InvokeAsync(Value))">
     <DataAnnotationsValidator /> <!-- FLUENT  VALIDATION https://github.com/Blazored/FluentValidation-->
 
-    <div class="col-md-6">
-        <label class="form-label">Summary</label>
-        <InputText @bind-Value="Value.Summary" class="form-control" />
-        <ValidationMessage For="(() => Value.Summary)" />
-    </div>
+   
+     @Filds
 
-    <div class="col-md-6">
-        <label class="form-label">Date</label>
-        <InputDate @bind-Value="Value!.Date" class="form-control" />
-       
-    </div>
 
-    <div class="col-md-6">
-        <label class="form-label">Temperatura</label>
-        <InputNumber @bind-Value="Value!.TemperatureC" class="form-control" />
-        <ValidationMessage For="(() => Value.TemperatureC)" />
-
-    </div>
 
      <div class="col-12">
 
@@ -37,6 +23,9 @@
 
 
 @code {
+
+    [Parameter]
+    public RenderFragment? Filds { get; set; }
 
     [Parameter]
     public Item? Value { get; set; }
