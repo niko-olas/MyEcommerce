@@ -1,7 +1,7 @@
-﻿@using FormModules.Data
+﻿@typeparam ItemType
 
 
-<h3>@Value!.Summary</h3>
+
 
 <!-- MODEL https://blazored.github.io/Modal/-->
 
@@ -23,16 +23,26 @@
 
 
 @code {
+    [Parameter]
+    public string? HeaderProperty { get; set; }
 
     [Parameter]
+    [EditorRequired]
     public RenderFragment? Filds { get; set; }
 
     [Parameter]
-    public Item? Value { get; set; }
+    public ItemType? Value { get; set; }
 
     [Parameter]
     public EventCallback OnCancel { get; set; }
 
     [Parameter]
-    public EventCallback<Item> OnSave { get; set; }
+    public EventCallback<ItemType> OnSave { get; set; }
+
+    private string? valueHeaderPropery;
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+    }
 }

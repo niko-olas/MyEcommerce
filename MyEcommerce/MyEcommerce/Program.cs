@@ -1,5 +1,6 @@
-using FatchDataModule.Configuration;
 using MyEcommerce.Components;
+using MyEcommerce.Application;
+using Blazored.LocalStorage;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,10 +8,16 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
-builder.RegisterFatchDataModule();
-builder.RegisterFormModule();
+
+
+builder.AddApplicationServices();
+
 
 var app = builder.Build();
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -30,12 +37,8 @@ app.UseStaticFiles();
 app.UseAntiforgery();
 
 app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode()
-    .AddAdditionalAssemblies(
-    typeof(FormModules.Form).Assembly,
-    typeof(CounterModule.Counter).Assembly,
-    typeof(IndexModules.Index).Assembly,
-    typeof(FatchDataModule.FatchData).Assembly);
+    .AddInteractiveServerRenderMode();
+   
 
 
 app.Run();

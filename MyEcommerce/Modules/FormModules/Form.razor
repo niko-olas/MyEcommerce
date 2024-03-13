@@ -17,7 +17,7 @@
 }
 else
 {
-    <Details Value="@item" OnCancel="Cancel" OnSave="Save">
+    <Details Value="@item" OnCancel="Cancel" >
         <Filds>
             <div class="col-md-6">
                 <label class="form-label">Summary</label>
@@ -45,6 +45,7 @@ else
 
 @code {
     private List<Item>? items = null;
+
     private Item? item = null;
 
 

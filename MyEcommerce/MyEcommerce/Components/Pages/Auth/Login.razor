@@ -1,0 +1,84 @@
+﻿@page "/auth/login"
+@using Blazored.LocalStorage
+@using MyEcommerce.Application.Core.Identity
+@using MyEcommerce.Application.Provider
+@using MyEcommerce.Shared.Models.Req.Identity
+
+
+
+@inject IIdentityServices identityServices;
+@inject NavigationManager navigationManager;
+@inject IJSRuntime js;
+@inject ILocalStorageService localStorageService;
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center fw-bold text-primary">Please Login into An Account</h3>
+                </div>
+                <div class="card-body">
+                    <EditForm Model="@Request" OnValidSubmit="HandleSubmit">
+                        <DataAnnotationsValidator />
+                        <ValidationSummary  Model="@Request" />
+                        <div class="form-group">
+                            <label for="name" class="form-label">Email Address</label>
+                            <InputText id="name" @bind-Value="@Request.Usename" class="form-control"></InputText>
+                            <ValidationMessage For="(() => Request.Usename)"></ValidationMessage>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <label for="Password" class="form-label">Password</label>
+                            <InputText type="password" id="Password" @bind-Value="Request.Password" class="form-control"></InputText>
+                            <ValidationMessage For="(() => Request.Password)"></ValidationMessage>
+                        </div>
+
+                        <div class="form-group mt-2">
+                            <button class="btn btn-outline-danger float-end" type="submit">Click To Login</button>
+                        </div>
+                    </EditForm>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [CascadingParameter]
+    public Task<AuthenticationState> AuthState { get; set; }
+
+    private LoginRequest Request = new LoginRequest();
+
+    protected override async Task OnInitializedAsync()
+    {
+        var user = (await AuthState).User;
+
+        if (user!.Identity!.IsAuthenticated)
+            navigationManager.NavigateTo("/");
+        else
+            await base.OnInitializedAsync();
+    }
+
+    public async Task HandleSubmit()
+    {
+        if (Request is null)
+            return;
+
+        var result = await identityServices.Login(Request);
+
+        if (result.IsSuccess)
+        {
+            await localStorageService.SetItemAsync<string>("JwtToken", result.Value.Token);
+            navigationManager.NavigateTo("/");
+        }
+        else
+        {
+            await js.InvokeVoidAsync("alert", result.Error);
+        }
+    }
+
+}
